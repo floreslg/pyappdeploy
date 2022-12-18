@@ -1,10 +1,12 @@
 from flask import Flask
+import dash
 
-app = Flask(__name__)
-
-@app.route('/')
-def index():
-    return 'Web App with Python Flask!'
+server = Flask(__name__)
+app = dash.Dash(
+    __name__,
+    server=server
+)
+app.layout = dash.html.Div("Hello")
 
 if __name__=='__main__':
-    app.run()
+    app.run_server()
